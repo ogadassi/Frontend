@@ -1,0 +1,22 @@
+html,
+body {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  background-color: #212121;
+  color: rgb(255, 255, 255);
+}
+a {
+  color: rgb(255, 255, 255);
+  text-decoration-line: none;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}

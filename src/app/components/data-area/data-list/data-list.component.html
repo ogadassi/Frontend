@@ -1,0 +1,38 @@
+<div class="tag-container">
+  <div class="tag" *ngFor="let t of tags">
+    <input
+      (input)="createTagArray(t)"
+      class="form-check-input"
+      type="checkbox"
+      [value]="t"
+    />
+    &nbsp;
+    <label> {{ capitalize(t) }} </label>
+  </div>
+</div>
+
+<div class="btn-container">
+  <button (click)="filterByTagArray()" class="animated-button">
+    <span class="text">Filter By Tags</span>
+    <span class="circle"></span>
+  </button>
+</div>
+
+<!-- all links to game should be navlinks for details page 
+    and in details page there will be real links -->
+
+<img *ngIf="games?.length === 0" src="../../../../assets/notfound.png" />
+
+<div *ngIf="games?.length > 0" class="card-container">
+  <div class="card" *ngFor="let g of games">
+    <a href="{{ g.game_url }}">{{ g.title }}</a>
+    <img [src]="g.thumbnail" />
+    {{ g.short_description }}<br /><br />
+    Genre: {{ g.genre }} <br />
+    Platform: {{ g.platform }}<br />
+    Publisher: {{ g.publisher }} &nbsp; &nbsp; Developer: {{ g.developer
+    }}<br />
+    Released On: {{ g.release_date }}<br />
+    <a href="{{ g.freetogame_profile_url }}">{{ g.title }}</a>
+  </div>
+</div>
