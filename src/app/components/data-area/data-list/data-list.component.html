@@ -1,6 +1,7 @@
 <div class="tag-container">
   <div class="tag" *ngFor="let t of tags">
     <input
+      #tagCheckbox
       (input)="createTagArray(t)"
       class="form-check-input"
       type="checkbox"
@@ -12,27 +13,35 @@
 </div>
 
 <div class="btn-container">
+  <button (click)="uncheckAllTags()" class="animated-button-clear">
+    <span class="text">Show All</span>
+    <span class="circle"></span>
+  </button>
+
   <button (click)="filterByTagArray()" class="animated-button">
     <span class="text">Filter By Tags</span>
     <span class="circle"></span>
   </button>
 </div>
 
-<!-- all links to game should be navlinks for details page 
-    and in details page there will be real links -->
+<img
+  *ngIf="games?.length === 0 && !loading"
+  src="../../../../assets/notfound.png"
+/>
 
-<img *ngIf="games?.length === 0" src="../../../../assets/notfound.png" />
+<div *ngIf="loading" class="loader">
+  <span></span>
+</div>
 
 <div *ngIf="games?.length > 0" class="card-container">
   <div class="card" *ngFor="let g of games">
-    <a href="{{ g.game_url }}">{{ g.title }}</a>
+    <a routerLink="/games/details/{{ g.id }}">{{ g.title }}</a>
     <img [src]="g.thumbnail" />
     {{ g.short_description }}<br /><br />
     Genre: {{ g.genre }} <br />
     Platform: {{ g.platform }}<br />
-    Publisher: {{ g.publisher }} &nbsp; &nbsp; Developer: {{ g.developer
-    }}<br />
+    Publisher: {{ g.publisher }} <br />
+    Developer: {{ g.developer }}<br />
     Released On: {{ g.release_date }}<br />
-    <a href="{{ g.freetogame_profile_url }}">{{ g.title }}</a>
   </div>
 </div>

@@ -1,0 +1,33 @@
+<div class="card">
+  <!-- <h3>{{ game.title }}</h3> -->
+  <img class="thumbnail" [src]="game?.thumbnail" />
+  <div class="dry-details">
+    Genre: {{ game?.genre }} <br />
+    Platform: {{ game?.platform }}<br />
+    Publisher: {{ game?.publisher }} <br />
+    Developer: {{ game?.developer }}<br />
+    Released On: {{ game?.release_date }}<br />
+  </div>
+  <div class="description">{{ game?.description }}</div>
+
+  <div class="screenshots">
+    <img [src]="game?.screenshots[index].image" />
+    <div>
+      <button class="browse" (click)="previousImage()">⬅️</button>
+      <button class="browse" (click)="nextImage()">➡️</button>
+    </div>
+  </div>
+
+  <div class="links">
+    <a [href]="game?.freetogame_profile_url">
+      <button class="btn" style="background-color: rgb(67, 161, 173)">
+        <i class="animation"></i>More Info<i class="animation"></i>
+      </button>
+    </a>
+    <a [href]="game?.game_url">
+      <button class="btn" style="background-color: rgb(50, 164, 119)">
+        <i class="animation"></i>Buy Now<i class="animation"></i>
+      </button>
+    </a>
+  </div>
+</div>
